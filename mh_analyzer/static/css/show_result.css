@@ -1,0 +1,57 @@
+#nav_btn{
+    position: relative; 
+    left:30px; 
+    top: 15px
+}
+#comparer{
+    position: relative;
+    left: 30px;
+    top: 15px;
+    width: 100%;
+    height: 100%;
+}
+#fast_analyzer{
+    position: relative;
+    top: 50px;
+}
+#cmp_form_left{
+    float: left;
+    width: 50%;
+    height: 50%;
+}
+#cmp_form_right{
+    float: right;
+    width: 50%;
+    height: 50%;
+}
+#cmp_btn_div{
+    width: 20%;
+    position: relative;
+    top: 10px;
+}
+#cmp_btn{
+    width: 100px;
+}
+#cmp_form{
+    position: relative;
+    top: 50px;
+}
+#cmp_form_submit{
+    position: relative;
+    width: 60%;
+    left: 10%;
+}
+#cmp_result_left{
+    position: relative;
+    float: left;
+    top: 150px;
+    width: 50%;
+    height: 50%;
+}
+#cmp_result_right{
+    position: relative;
+    float: right;
+    top: 150px;
+    width: 50%;
+    height: 50%;
+}

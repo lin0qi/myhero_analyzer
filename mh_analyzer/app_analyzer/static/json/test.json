@@ -1,0 +1,14 @@
+{
+    "test" : {
+        "para" : {
+            "num" : "0"
+        },
+        "var" : {
+            "num" : "0"
+        },
+        "if_info" : {
+            "num" : "0"
+        },
+        "ret" : "1 + sys.delete()"
+    }
+}

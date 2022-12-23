@@ -1,0 +1,188 @@
+{
+    "functions" : {
+        "f_none" : {
+            "para" : {
+                "num" : "0"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "1"
+        },
+        "f_2dmg_coeff" : {
+            "para" : {
+                "num" : "4",
+                "para1" : "dmg_min",
+                "para2" : "dmg_max",
+                "para3" : "dmg_coeff",
+                "para4" : "dmg_const"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "(dmg_min + dmg_max) / 2. * dmg_coeff + dmg_const"
+        },
+        "f_dmg_coeff" : {
+            "para" : {
+                "num" : "3",
+                "para1" : "dmg",
+                "para2" : "dmg_coeff",
+                "para3" : "dmg_const"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "dmg * dmg_coeff + dmg_const"
+        },
+        "f_dmg_pct" : {
+            "para" : {
+                "num" : "1",
+                "para1" : "dmg"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "dmg + 100."
+        },
+        "f_atk" : {
+            "para" : {
+                "num" : "1",
+                "para1" : "atk"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "atk + 700."
+        },
+        "f_cd" : {
+            "para" : {
+                "num" : "1",
+                "para1" : "cd"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "1. / (100. - cd)"
+        },
+        "f_crit" : {
+            "para" : {
+                "num" : "3",
+                "para1" : "crit_chance",
+                "para2" : "crit_dmg",
+                "para3" : "crit_resist"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "3",
+                "1" : {
+                    "if" : "True",
+                    "then" : "crit_chance -= crit_resist"
+                },
+                "2" : {
+                    "if" : "crit_chance > 100.",
+                    "then" : "crit_chance = 100."
+                },
+                "3" : {
+                    "if" : "crit_chance < 0.",
+                    "then" : "crit_chance = 0."
+                }
+            },
+            "ret" : "crit_chance / 100. * crit_dmg / 100. + 1 - crit_chance / 100."
+        },
+        "f_armor" : {
+            "para" : {
+                "num" : "2",
+                "para1" : "pen_armor",
+                "para2" : "armor"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "2",
+                "1" : {
+                    "if" : "True",
+                    "then" : "armor = armor - pen_armor"
+                },
+                "2" : {
+                    "if" : "armor < 0.",
+                    "then" : "armor = 0."
+                }
+            },
+            "ret" : "1 - armor / (armor + 1505.)"
+        },
+        "f_elem" : {
+            "para" : {
+                "num" : "2",
+                "para1" : "pen_elem",
+                "para2" : "elem_resist"
+            },
+            "var" : {
+                "num" : "1",
+                "var1" : "ret"
+            },
+            "if_info" : {
+                "num" : "3",
+                "1" : {
+                    "if" : "True",
+                    "then" : "elem_resist = elem_resist - pen_elem"
+                },
+                "2" : {
+                    "if" : "elem_resist < 0.",
+                    "then" : "ret = 1 - elem_resist / (3992. - elem_resist)"
+                },
+                "3" : {
+                    "if" : "elem_resist >= 0.",
+                    "then" : "ret = 1 - elem_resist / (elem_resist + 1505.)"
+                }
+            },
+            "ret" : "ret"
+        },
+        "f_liner_pwr" : {
+            "para" : {
+                "num" : "1",
+                "para1" : "liner_pwr"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "liner_pwr"
+        },
+        "f_shield_dmg" :{
+            "para" : {
+                "num" : "1",
+                "para1" : "shield_dmg"
+            },
+            "var" : {
+                "num" : "0"
+            },
+            "if_info" : {
+                "num" : "0"
+            },
+            "ret" : "100 + shield_dmg / 4."
+        }
+    }
+}

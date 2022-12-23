@@ -1,0 +1,344 @@
+{
+    "property" : {
+        "armor" : {
+            "cn_name" : "敌人护甲",
+            "tag"  : "armor",
+            "family" : "armor",
+            "value" : "0",
+            "std_value" : "inf",
+            "apf_func_name" : "f_armor",
+            "func_pos" : "2"
+        },
+        "element_resist" : {
+            "cn_name" : "敌人元素抗性",
+            "tag" : "elem_resist", 
+            "family" : "elem_resist",
+            "value" : "0",
+            "std_value" : "inf",
+            "apf_func_name" : "f_elem",
+            "func_pos" : "2"
+        },
+        "crit_resist" : {
+            "cn_name" : "敌人暴击抗性",
+            "tag" : "crit", 
+            "family" : "crit",
+            "value" : "0",
+            "std_value" : "inf",
+            "apf_func_name" : "f_crit",
+            "func_pos" : "3"
+        },
+        "attack_power" : {
+            "cn_name" : "攻击强度",
+            "tag" : "atk",
+            "family" : "none",
+            "value" : "1000",
+            "std_value" : "12200",
+            "apf_func_name" : "f_atk",
+            "func_pos" : "1"
+        },
+        "min_damage" : {
+            "cn_name" : "最小伤害",
+            "tag" : "coef",
+            "family" : "2dmg",
+            "value" : "200",
+            "std_value" : "inf",
+            "apf_func_name" : "f_2dmg_coeff",
+            "func_pos" : "1"
+        },
+        "max_damage" : {
+            "cn_name" : "最大伤害",
+            "tag" : "coef",
+            "family" : "2dmg",
+            "value" : "300",
+            "std_value" : "inf",
+            "apf_func_name" : "f_2dmg_coeff",
+            "func_pos" : "2"
+        },
+        "attack_speed" : {
+            "cn_name" : "攻速",
+            "tag" : "none",
+            "family" : "none",
+            "value" : "1",
+            "std_value" : "inf",
+            "apf_func_name" : "f_none",
+            "func_pos" : "1"
+        }, 
+        "critical_damage" : {
+            "cn_name" : "暴击伤害",
+            "tag" : "crit",
+            "family" : "crit",
+            "value" : "200",
+            "std_value" : "742",
+            "apf_func_name" : "f_crit",
+            "func_pos" : "2"
+        },
+        "crit" : {
+            "cn_name" : "暴击率",
+            "tag" : "crit",  
+            "family" : "crit",
+            "value" : "25",
+            "std_value" : "135",
+            "apf_func_name" : "f_crit",
+            "func_pos" : "1"
+        },
+        "element_attack" : {
+            "cn_name" : "属性攻击",
+            "tag" : "atk",
+            "family" : "none",
+            "value" : "300",
+            "std_value" : "2535",
+            "apf_func_name" : "f_atk",
+            "func_pos" : "1"
+        },
+        "armor_penetration" : {
+            "cn_name" : "护甲穿透",
+            "tag" : "armor", 
+            "family" : "armor",
+            "value" : "3000",
+            "std_value" : "7000",
+            "apf_func_name" : "f_armor",
+            "func_pos" : "1"
+        },
+        "head_damage" : {
+            "cn_name" : "首领伤害",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "50",
+            "std_value" : "136.5",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        }, 
+        "ability_damage" : {
+            "cn_name" : "技能伤害",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "60",
+            "std_value" : "90",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        }, 
+        "shield_damage" : {
+            "cn_name" : "护盾伤害",
+            "tag" : "shield",
+            "family" : "shield",
+            "value" : "20",
+            "std_value" : "0",
+            "apf_func_name" : "f_shield_dmg",
+            "func_pos" : "1"
+        },
+        "runic_power" : {
+            "cn_name" : "符文能量",
+            "tag" : "liner",
+            "family" : "none",
+            "value" : "800",
+            "std_value" : "1330",
+            "apf_func_name" : "f_liner_pwr",
+            "func_pos" : "1"
+        },
+        "restraint" : {
+            "cn_name" : "属性压制",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "10",
+            "std_value" : "40",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        }, 
+        "damage_amplify" : {
+            "cn_name" : "伤害增幅",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "10",
+            "std_value" : "25",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "restraint_amplify" : {
+            "cn_name" : "克制增幅",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "10",
+            "std_value" : "25",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "element_penetration" : {
+            "cn_name" : "元素穿透",
+            "tag" : "elem_resist",
+            "family" : "elem_resist", 
+            "value" : "1000",
+            "std_value" : "2500",
+            "apf_func_name" : "f_elem",
+            "func_pos" : "1"
+        }, 
+        "global_damage" : {
+            "cn_name" : "伤害加成",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "100",
+            "std_value" : "150",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "element_damage" : {
+            "cn_name" : "元素伤害加成",
+            "tag" : "pct",
+            "family" : "none",
+            "value" : "200",
+            "std_value" : "inf",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "attack_damage" : {
+            "cn_name" : "普攻伤害",
+            "tag" : "none",
+            "family" : "none",
+            "value" : "90",
+            "std_value" : "inf",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "mana" : {
+            "cn_name" : "能量",
+            "tag" : "none",
+            "family" : "none",
+            "value" : "100",
+            "std_value" : "inf",
+            "apf_func_name" : "f_none",
+            "func_pos" : "1"
+        }, 
+        "cooling_down" : {
+            "cn_name" : "冷却缩减",
+            "tag" : "none",
+            "family" : "none",
+            "value" : "0",
+            "std_value" : "inf",
+            "apf_func_name" : "f_none",
+            "func_pos" : "1"
+        },
+        "ability_coeff" : {
+            "cn_name" : "技能系数",
+            "tag" : "coef",
+            "family" : "2dmg",
+            "value" : "10",
+            "std_value" : "inf",
+            "apf_func_name" : "f_2dmg_coeff",
+            "func_pos" : "3"
+        },
+        "ablity_const" : {
+            "cn_name" : "技能常数",
+            "tag" : "coef",
+            "family" : "2dmg",
+            "value" : "2500",
+            "std_value" : "inf",
+            "apf_func_name" : "f_2dmg_coeff",
+            "func_pos" : "4"
+        },
+        "vulner_global" : {
+            "cn_name" : "易伤",
+            "tag" : "vulner",
+            "family" : "none",
+            "value" : "10",
+            "std_value" : "inf",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "vulner_element" : {
+            "cn_name" : "元素易伤",
+            "tag" : "vulner",
+            "family" : "none",
+            "value" : "10",
+            "std_value" : "inf",
+            "apf_func_name" : "f_dmg_pct",
+            "func_pos" : "1"
+        },
+        "is_head" : {
+            "cn_name" : "空属性",
+            "tag" : "none",
+            "family" : "none",
+            "value" : "0",
+            "std_value" : "inf",
+            "apf_func_name" : "f_none",
+            "func_pos" : "0"
+        },
+        "have_sheild" : {
+            "cn_name" : "空属性",
+            "tag" : "none",
+            "family" : "none",
+            "value" : "0",
+            "std_value" : "inf",
+            "apf_func_name" : "f_none",
+            "func_pos" : "0"
+        }
+    },
+    "normal_property" : {
+        "critical_damage" : {
+            "value" : "20",
+            "cn_name" : "暴击伤害"
+        },
+        "element_attack" : {
+            "value" : "250",
+            "cn_name" : "元素攻击"
+        },
+        "armor_penetration" : {
+            "value" : "400",
+            "cn_name" : "护甲穿透"
+        },
+        "head_damage" : {
+            "value" : "30",
+            "cn_name" : "首领伤害"
+        },
+        "runic_power" : {
+            "value" : "10",
+            "cn_name" : "符文能量"
+        },
+        "restraint" : {
+            "value" : "10",
+            "cn_name" : "属性压制"
+        },
+        "damage_amplify" : {
+            "value" : "10",
+            "cn_name" : "伤害增幅"
+        },
+        "restraint_amplify" : {
+            "value" : "10",
+            "cn_name" : "克制增幅"
+        },
+        "element_penetration" : {
+            "value" : "200",
+            "cn_name" : "元素穿透"
+        }
+    },
+    "name_convert_dict" : {
+        "armor": "敌人护甲",
+        "element_resist": "敌人元素抗性",
+        "crit_resist": "敌人暴击抗性",
+        "attack_power": "攻击强度",
+        "min_damage": "最小伤害",
+        "max_damage": "最大伤害",
+        "attack_speed": "攻速",
+        "critical_damage": "暴击伤害",
+        "crit": "暴击率",
+        "element_attack": "属性攻击",
+        "armor_penetration": "护甲穿透",
+        "head_damage": "首领伤害",
+        "ability_damage": "技能伤害",
+        "shield_damage": "护盾伤害",
+        "runic_power": "符文能量",
+        "restraint": "属性压制",
+        "damage_amplify": "伤害增幅",
+        "restraint_amplify": "克制增幅",
+        "element_penetration": "元素穿透",
+        "global_damage": "伤害加成",
+        "element_damage": "元素伤害加成",
+        "attack_damage": "普攻伤害",
+        "mana": "能量",
+        "cooling_down": "冷却缩减",
+        "ability_coeff": "技能系数",
+        "ablity_const": "技能常数",
+        "vulner_global": "易伤",
+        "vulner_element": "元素易伤",
+        "is_head": "空属性",
+        "have_sheild": "空属性"
+    }
+}

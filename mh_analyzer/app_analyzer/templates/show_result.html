@@ -1,0 +1,228 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title>cacul result</title>
+    <link rel="icon" src="{%static 'image/head.ico'%}" type="image/x-icon" />
+    <link rel="shortcut icon" src="{%static 'image/head.ico'%}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">  
+    <link rel="stylesheet" href="{% static 'css/show_result.css'%}">  
+    <script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/show_result.js' %}"></script>
+        
+</head>
+<script>
+    $(document).ready(function(){
+        if("{{ cur_page }}" == "analyzer"){
+            let div_cmp_result = document.getElementById("div_cmp_result");
+            div_cmp_result.style.display = "none";
+            change_to("analyzer");
+        }else if("{{cur_page}}" == "comparer"){
+            let div_cmp_result = document.getElementById("div_cmp_result");
+            div_cmp_result.style.display = "block";
+            change_to("comparer");
+            if ("{{l_less_than_r}}" == "True"){
+                let div_cmp_lside = document.getElementById("cmp_result_left");
+                let div_cmp_rside = document.getElementById("cmp_result_right");
+                div_cmp_lside.style.color = "#FF0000";
+                div_cmp_rside.style.color = "#00FF00";
+            }else if("{{l_less_than_r}}" == "False"){
+                let div_cmp_lside = document.getElementById("cmp_result_left");
+                let div_cmp_rside = document.getElementById("cmp_result_right");
+                div_cmp_lside.style.color = "#00FF00";
+                div_cmp_rside.style.color = "#FF0000";
+            }
+            {% for k, v in cmp_dict_l.items %}
+                add_cmp_form_line("{{ k }}", 
+                "{{ v.cn_name }}", 'cmp_form_left', 
+                {{ v.value }}, 
+                {{ v.delta_value }});
+            {%endfor%}
+            {% for k, v in cmp_dict_r.items %}
+                add_cmp_form_line("{{ k }}", 
+                "{{ v.cn_name }}", 
+                'cmp_form_right', 
+                {{ v.value }}, 
+                {{ v.delta_value }});
+            {%endfor%}
+        }
+    })
+</script>
+<body>
+<div class="btn-group" id="nav_btn">
+    <button type="button" class="btn btn-default" style="width:150px" onclick="change_to('analyzer')">
+        属性分析
+    </button>
+    <button type="button" class="btn btn-default" style="width:150px" onclick="change_to('comparer')">
+        属性比较
+    </button>
+    <button type="button" class="btn btn-default" style="width:150px" onclick="change_to('fast_analyzer')">
+        快速分析
+    </button>
+</div>
+<div id="main_div">
+    <div id="analyzer" style="display: block;">
+        <div class='page-header'>
+            <h3 class='text-center'>计算结果——属性得分：{{ apf_dec }} × 10 ^ {{ apf_exp }}</h3>
+        </div>
+        <form class='form-horizontal' role='form' id="analyse_form" action='' method='post'>
+            {% csrf_token %}
+            {%for k, v in p_dict.items%}
+                <div class="form-group">
+                    <label class='col-sm-1' ></label>
+                    <label class='col-sm-2' >{{ v.cn_name }}</label>
+                    <div>
+                        <input type='text' class='col-sm-1' name='{{ k }}' value='{{ v.value }}'>
+                    </div>
+                    <label class='col-sm-1'>每</label>
+                    <div>
+                        <input type='text' class='col-sm-1' name='{{ k }}_delta' value='{{ v.delta }}'>
+                    </div>
+                    <label class='col-sm-2'>点该属性收益</label>
+                    <div class='progress' style='height: 20px; width: 200px; position: relative; top: 5px'>
+                        <div class='progress-bar progress-bar-success' role='progressbar' 
+                        aria-valuemin='0' aria-valuemax='100' style='width:{{ v.delta_pct_process1 }}%'>
+                            <div style='color: #000000; position:relative; left: 10px;'>
+                                <strong>{{ v.apf_apf }}</strong>
+                            </div>
+                        </div>
+                        <div class='progress-bar progress-bar-info' role='progressbar' 
+                        aria-valuemin='0' aria-valuemax='100' style='width:{{ v.delta_pct_process2 }}%'>
+                        </div>
+                        <div class='progress-bar progress-bar-warning' role='progressbar' 
+                        aria-valuemin='0' aria-valuemax='100' style='width:{{ v.delta_pct_process3 }}%'>
+                        </div>
+                        <div class='progress-bar progress-bar-danger' role='progressbar'
+                        aria-valuemin='0' aria-valuemax='100' style='width:{{ v.delta_pct_process4 }}%'>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <input type="hidden" name="post_form" value="analyzer">
+            </br>
+            <button class='btn btn-primary btn-lg btn-block' id="buttoner">提交</button>
+        </form>
+    </div>
+
+    <div id='comparer' style="display: none;">
+        <div class="btn-group" id="cmp_btn_div">
+            <button type="button" 
+                id="cmp_btn"
+                class="btn btn-default dropdown-toggle" 
+                data-toggle="dropdown"
+                aria-expanded="false">
+                添加-左
+            </button>
+            <ul class="dropdown-menu" style="cursor: pointer;">
+                {% for k, v in p_dict.items%}
+                    <li>
+                        <a class="dropdown-item" onclick="add_cmp_form_line('{{ k }}', '{{ v.cn_name }}', 'cmp_form_left', '{{ v.value }}', 0)">
+                        {{ v.cn_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="btn-group" id="cmp_btn_div">
+            <button type="button" 
+                id="cmp_btn"
+                class="btn btn-default dropdown-toggle"  
+                onclick="delete_sub_form_line('cmp_form_left')">
+                删除-左
+            </button>
+        </div>
+        <div class="btn-group" id="cmp_btn_div">
+            <button type="button"  
+                id="cmp_btn"
+                class="btn btn-default dropdown-toggle" 
+                data-toggle="dropdown"
+                aria-expanded="false">
+                添加-右
+            </button>
+                <ul class="dropdown-menu" style="cursor: pointer;">
+                    {% for k, v in p_dict.items%}
+                        <li>
+                            <a class="dropdown-item" onclick="add_cmp_form_line('{{ k }}', '{{ v.cn_name }}', 'cmp_form_right', '{{ v.value }}', 0)">
+                            {{ v.cn_name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+        </div>
+
+        <div class="btn-group" id="cmp_btn_div">
+            <button type="button" 
+                id="cmp_btn"
+                class="btn btn-default dropdown-toggle" 
+                onclick="delete_sub_form_line('cmp_form_right')">
+                删除-右
+            </button>
+        </div>
+
+        
+
+        <div id="div_cmp_form">
+            <form class='form-horizontal' role='form' id="cmp_form" action='' method='post'>
+                {% csrf_token %}
+                <div id="cmp_form_left"></div>
+
+                <div id="cmp_form_right"></div>
+
+                <input type="hidden" name="post_form" value="comparer">
+            </form>
+        </div>
+
+
+        <div id="div_cmp_result" style="display: none;">
+            <div id="cmp_result_left">
+                <label class='col-sm-1'></label>
+                <label class='col-sm-4'>总计伤害增幅:{{cmp_apf_left}}</label>
+            </div>
+
+            <div id="cmp_result_right">
+                <label class='col-sm-1'></label>
+                <label class='col-sm-4'>总计伤害增幅:{{cmp_apf_right}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="fast_analyzer" style="display: none;">
+        <div class="container">
+            {% for k, v in equal_dict.items %}
+                <div class="row">
+                    <label class='col-sm-1' ></label>
+                    <label class="col-sm-1">每</label>
+                    <label class="col-sm-1">{{ v.self_value }}</label>
+                    <label class="col-sm-2">{{ k }}</label>
+                    <label class="col-sm-1">=</label>
+                    <label class="col-sm-2">{{ v.atk_pwr_value }}</label>
+                    <label class="col-sm-2">攻击强度</label>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+
+    <div id="func_searcher" style="display: none;">
+        <div class="btn-group" id="search_btn_div">
+            <button type="button" 
+                id="search_btn"
+                class="btn btn-default dropdown-toggle" 
+                data-toggle="dropdown"
+                aria-expanded="false">
+                查询属性计算函数
+            </button>
+            <ul class="dropdown-menu" style="cursor: pointer;">
+                {% for k, v in p_dict.items%}
+                    <li>
+                        <a class="dropdown-item" onclick="add_cmp_form_line('{{ k }}', '{{ v.cn_name }}', 'cmp_form_left', '{{ v.value }}', 0)">
+                        {{ v.cn_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</body>

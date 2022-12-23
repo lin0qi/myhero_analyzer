@@ -1,0 +1,18 @@
+{
+    "python.analysis.extraPaths": [
+        "C:\\Users\\admin\\AppData\\Roaming\\Python\\Python37\\site-packages",
+        "./",
+        "./pylib/",
+        "./mh_analyzer",
+        "./mh_analyzer/app_analyzer"
+    ],
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html": "django-html",
+        "**/templates/**/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    }
+}

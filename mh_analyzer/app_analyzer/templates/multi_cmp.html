@@ -1,0 +1,42 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+    <title>multi compare</title>
+    <link rel="icon" src="{%static 'image/head.ico'%}" type="image/x-icon" />
+    <link rel="shortcut icon" src="{%static 'image/head.ico'%}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class='page-header'>
+    <h3 class='text-center'>请输入您的属性信息</h3>
+</div>
+
+<form class='form-horizontal' role='form' id='property' action='' method='post'>
+    {% csrf_token %}
+    {%for k, v in p_dict.items%}
+        <div class="form-group">
+            <label class='col-sm-1' ></label>
+            <label class='col-sm-2' >{{ v.cn_name }}</label>
+            <div>
+                <input type='text' class='col-sm-2' name='{{ k }}' value='{{ v.value }}'>
+            </div>
+        </div>
+    {% endfor %}
+
+    </br>
+    <button class='btn btn-primary btn-lg btn-block' id="buttoner" onclick='update()'>提交</button>
+</form>
+
+
+
+<iframe  width=0 height=0 frameborder=0 id="myiframe" name="myiframe"></iframe>
+
+</body>
+
+</html>
